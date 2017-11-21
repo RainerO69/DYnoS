@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Documento sin título</title>
+<style type="text/css">
+<!--
+body {
+	font: 100%/1.4 Verdana, Arial, Helvetica, sans-serif;
+	background-color: #42413C;
+	margin: 0;
+	padding: 0;
+	color: #000;
+}
+
+/* ~~ Selectores de elemento/etiqueta ~~ */
+ul, ol, dl { /* Debido a las diferencias existentes entre los navegadores, es recomendable no añadir relleno ni márgenes en las listas. Para lograr coherencia, puede especificar las cantidades deseadas aquí o en los elementos de lista (LI, DT, DD) que contienen. Recuerde que lo que haga aquí se aplicará en cascada en la lista .nav, a no ser que escriba un selector más específico. */
+	padding: 0;
+	margin: 0;
+}
+h1, h2, h3, h4, h5, h6, p {
+	margin-top: 0;	 /* la eliminación del margen superior resuelve un problema que origina que los márgenes escapen de la etiqueta div contenedora. El margen inferior restante lo mantendrá separado de los elementos de que le sigan. */
+	padding-right: 15px;
+	padding-left: 15px; /* la adición de relleno a los lados del elemento dentro de las divs, en lugar de en las divs propiamente dichas, elimina todas las matemáticas de modelo de cuadro. Una div anidada con relleno lateral también puede usarse como método alternativo. */
+}
+a img { /* este selector elimina el borde azul predeterminado que se muestra en algunos navegadores alrededor de una imagen cuando está rodeada por un vínculo */
+	border: none;
+}
+
+/* ~~ La aplicación de estilo a los vínculos del sitio debe permanecer en este orden (incluido el grupo de selectores que crea el efecto hover -paso por encima-). ~~ */
+a:link {
+	color: #42413C;
+	text-decoration: underline; /* a no ser que aplique estilos a los vínculos para que tengan un aspecto muy exclusivo, es recomendable proporcionar subrayados para facilitar una identificación visual rápida */
+}
+a:visited {
+	color: #6E6C64;
+	text-decoration: underline;
+}
+a:hover, a:active, a:focus { /* este grupo de selectores proporcionará a un usuario que navegue mediante el teclado la misma experiencia de hover (paso por encima) que experimenta un usuario que emplea un ratón. */
+	text-decoration: none;
+}
+
+/* ~~ este contenedor de anchura fija rodea a las demás divs ~~ */
+.container {
+	width: 960px;
+	background-color: #FFF;
+	margin: 0 auto; /* el valor automático de los lados, unido a la anchura, centra el diseño */
+}
+
+/* ~~ no se asigna una anchura al encabezado. Se extenderá por toda la anchura del diseño. Contiene un marcador de posición de imagen que debe sustituirse por su propio logotipo vinculado ~~ */
+.header {
+	background-color: #ADB96E;
+}
+
+/* ~~ Estas son las columnas para el diseño. ~~ 
+
+1) El relleno sólo se sitúa en la parte superior y/o inferior de las divs. Los elementos situados dentro de estas divs tienen relleno a los lados. Esto le ahorra las "matemáticas de modelo de cuadro". Recuerde que si añade relleno o borde lateral a la div propiamente dicha, éste se añadirá a la anchura que defina para crear la anchura *total*. También puede optar por eliminar el relleno del elemento en la div y colocar una segunda div dentro de ésta sin anchura y el relleno necesario para el diseño deseado. También puede optar por eliminar el relleno del elemento en la div y colocar una segunda div dentro de ésta sin anchura y el relleno necesario para el diseño deseado.
+
+2) No se asigna margen a las columnas, ya que todas ellas son flotantes. Si es preciso añadir un margen, evite colocarlo en el lado hacia el que se produce la flotación (por ejemplo: un margen derecho en una div configurada para flotar hacia la derecha). En muchas ocasiones, puede usarse relleno como alternativa. En el caso de divs para las que deba incumplirse esta regla, deberá añadir una declaración "display:inline" a la regla de la div para evitar un error que provoca que algunas versiones de Internet Explorer dupliquen el margen.
+
+3) Dado que las clases se pueden usar varias veces en un documento (y que también se pueden aplicar varias clases a un elemento), se ha asignado a las columnas nombres de clases en lugar de ID. Por ejemplo, dos divs de barra lateral podrían apilarse si fuera necesario. Si lo prefiere, éstas pueden cambiarse a ID fácilmente, siempre y cuando las utilice una sola vez por documento.
+
+4) Si prefiere que la navegación esté a la derecha en lugar de a la izquierda, simplemente haga que estas columnas floten en dirección opuesta (todas a la derecha en lugar de todas a la izquierda) y éstas se representarán en orden inverso. No es necesario mover las divs por el código fuente HTML.
+
+*/
+.sidebar1 {
+	float: left;
+	width: 180px;
+	background-color: #EADCAE;
+	padding-bottom: 10px;
+}
+.content {
+
+	padding: 10px 0;
+	width: 780px;
+	float: left;
+}
+
+/* ~~ Este selector agrupado da espacio a las listas del área de .content ~~ */
+.content ul, .content ol { 
+	padding: 0 15px 15px 40px; /* este relleno reproduce en espejo el relleno derecho de la regla de encabezados y de párrafo incluida más arriba. El relleno se ha colocado en la parte inferior para que el espacio existente entre otros elementos de la lista y a la izquierda cree la sangría. Estos pueden ajustarse como se desee. */
+}
+
+/* ~~ Los estilos de lista de navegación (pueden eliminarse si opta por usar un menú desplegable predefinido como el de Spry) ~~ */
+ul.nav {
+	list-style: none; /* esto elimina el marcador de lista */
+	border-top: 1px solid #666; /* esto crea el borde superior de los vínculos (los demás se sitúan usando un borde inferior en el LI) */
+	margin-bottom: 15px; /* esto crea el espacio entre la navegación en el contenido situado debajo */
+}
+ul.nav li {
+	border-bottom: 1px solid #666; /* esto crea la separación de los botones */
+}
+ul.nav a, ul.nav a:visited { /* al agrupar estos selectores, se asegurará de que los vínculos mantengan el aspecto de botón incluso después de haber sido visitados */
+	padding: 5px 5px 5px 15px;
+	display: block; /* esto asigna propiedades de bloque al vínculo, lo que provoca que llene todo el LI que lo contiene. Esto provoca que toda el área reaccione a un clic de ratón. */
+	width: 160px;  /*esta anchura hace que se pueda hacer clic en todo el botón para IE6. Puede eliminarse si no es necesario proporcionar compatibilidad con IE6. Calcule la anchura adecuada restando el relleno de este vínculo de la anchura del contenedor de barra lateral. */
+	text-decoration: none;
+	background-color: #C6D580;
+}
+ul.nav a:hover, ul.nav a:active, ul.nav a:focus { /* esto cambia el color de fondo y del texto tanto para usuarios que naveguen con ratón como para los que lo hagan con teclado */
+	background-color: #ADB96E;
+	color: #FFF;
+}
+
+/* ~~ El pie de página ~~ */
+.footer {
+	padding: 10px 0;
+	background-color: #CCC49F;
+	position: relative;/* esto da a IE6 hasLayout para borrar correctamente */
+	clear: both; /* esta propiedad de borrado fuerza a .container a conocer dónde terminan las columnas y a contenerlas */
+}
+
+/* ~~ clases float/clear varias ~~ */
+.fltrt {  /* esta clase puede utilizarse para que un elemento flote en la parte derecha de la página. El elemento flotante debe preceder al elemento junto al que debe aparecer en la página. */
+	float: right;
+	margin-left: 8px;
+}
+.fltlft { /* esta clase puede utilizarse para que un elemento flote en la parte izquierda de la página. El elemento flotante debe preceder al elemento junto al que debe aparecer en la página. */
+	float: left;
+	margin-right: 8px;
+}
+.clearfloat { /* esta clase puede situarse en una <br /> o div vacía como elemento final tras la última div flotante (dentro de #container) si #footer se elimina o se saca fuera de #container */
+	clear:both;
+	height:0;
+	font-size: 1px;
+	line-height: 0px;
+}
+-->
+</style></head>
+
+<body bgcolor="#993300" background="../f.jpg">
+
+<div class="container">
+  <div class="header"><a href="#"></a> 
+    <!-- end .header --><img src="../1798093_337672859690676_395176079600704672_n.jpg" width="959" height="235" /></div>
+  <div class="sidebar1">
+    <ul class="nav">
+      <li><a href="paranormal1.html">Index</a>    </li>
+    </ul>
+    <p><img src="../7casos/s1.jpg" width="159" height="137" /></p>
+    <p>&nbsp;</p>
+    <p><img src="../7casos/s2.jpg" width="161" height="122" /></p>
+    <p>&nbsp;</p>
+    <p><img src="../7casos/s3.jpg" width="158" height="137" /></p>
+    <p>&nbsp;</p>
+    <p><img src="../7casos/s4.jpg" width="159" height="147" /></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p><img src="../7casos/s5.jpg" width="159" height="140" /></p>
+    <p>&nbsp;</p>
+    <p><img src="../7casos/s6.jpg" width="160" height="153" /></p>
+    <p>&nbsp;</p>
+    <p><img src="../7casos/s7.png" width="158" height="143" /></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+    <p><img src="../7casos/s11.jpg" width="159" height="145" /></p>
+    <p>&nbsp;</p>
+    <p>&nbsp;</p>
+  </div>
+  <div class="content">
+    <h2>1. Los alpinistas desaparecidos</h2>
+    <p>En 1959, un grupo de amigos se dirigía a hacer alpinismo y acamparon en Rusia. Poco después desaparecieron y dejaron sus carpas vacías. Cuando los cuerpos se encontraron llevaban poca ropa, tenían heridas internas y el cuerpo teñido de naranja. No había señales de lucha, aunque a algunos de ellos les faltaba la lengua y los ojos. Hasta el día de hoy no hay información sobre qué pudo haberles sucedido, aunque existen toda clase de<a href="http://whatculture.com/offbeat/10-real-life-horror-stories-will-probably-ruin-day.php/3" target="_blank"> teorías</a>.</p>
+    <h2>2. La canción que mata personas</h2>
+    <p>En los años 30 se popularizó la canción<strong><em> Gloomy Sunday</em></strong>, pero poco a poco fue tornándose terrorífica cuando se difundió que más de 18 personas (algunos dicen incluso 100) se suicidaron en Budapest debido a ella. Hungría siempre tuvo altas tasas de suicidio, y la canción era tan popular que no resulta extraño que un suicida la estuviera escuchando. Además, la letra depresiva no ayuda demasiado para mejorar el humor. Sin embargo, hubo un suicidio real por ella: el creador de la canción se suicidó luego de que su único éxito fuera culpado de <a href="http://www.cracked.com/article_20751_6-true-stories-from-history-creepier-than-any-horror-movie_p2.html" target="_blank">estas calamidades</a></p>
+    <h2>3. Chucky realmente existió</h2>
+    <p>La película <strong><em>Child&rsquo;s Play</em></strong>, donde un niño tiene un muñeco con un espíritu maligno dentro, está basada en una historia real. Robert es un muñeco de tamaño real que pertenecía al niño Gene Otto. Al parecer, un sirviente se enojó con la familia y puso un hechizo sobre el muñeco. El niño comenzó a hablar con él y para sorpresa de todos, recibía respuesta. Sin embargo, pocos creyeron en lo que Gene contaba sobre que el muñeco movía objetos. Luego de su muerte, Robert pasó de mano en mano y ahora está en un museo donde, según cuentan, suceden cosas extrañas.</p>
+    <h2>4. La primera asesina serial</h2>
+    <p>Aunque no lo creas, el primer registro de alguien que asesinara gente en grandes cantidades fue una mujer en Roma llamada <strong>Locusta</strong>, precisamente en un período pacífico de la ciudad. En el siglo I fue encarcelada por envenenamiento, pero Agripina le dio el perdón luego de que la ayudara a asesinar al <strong>Emperador Claudius</strong>. Lo mismo sucedió tiempo después con <strong>Nerón</strong>, quien además le dio un sitio para enseñar sus artes y convertirse en profesora. Sin embargo, no pudo salvarse cuando el <strong>Emperador Galba</strong> la condenó y fue ejecutada públicamente.</p>
+    <h2>5. Herculano y el Vesubio</h2>
+    <p>Cuando pensamos en el <strong>Vesubio</strong> automáticamente pensamos en <strong>Pompeya</strong>, quizás por haber sido una de las ciudades más importantes y estar ahora enterrada debajo de la ceniza. Sin embargo, <strong>Herculano</strong> fue una ciudad pequeña, mucho más cercana al Vesubio y con consecuencias peores. Se dice que incluso algunos cráneos explotaron debido al calor concentrado y el magma cayendo en la ciudad. Estar allí durante la erupción seguro fue un infierno, con todos los elementos del Inframundo.</p>
+    <h2>6. Los zombies del sífilis en las calles de Italia</h2>
+    <p>En 1494 Italia no se parecía en nada a la que conocemos hoy en día. Un enorme brote de<strong> sífilis</strong> asolaba la ciudad, y la enfermedad no era escondida con vergüenza, como sucedería años más tarde, sino que se sufría frente a todo el mundo.</p>
+    <p>La enfermedad causaba que la piel en el rostro de las personas se cayera, así como las extremidades y los genitales. En términos estéticos, era prácticamente como vivir en una película de<strong> zombies</strong>. Las personas morían en el correr de algunos meses, con su piel completamente destruida.</p>
+    <h2>7. El hombre que intentó salvar a Lincoln</h2>
+    <p>Aunque sabemos exactamente qué pasó cuando <strong>Abraham Lincoln</strong> fue asesinado, y también conocemos el nombre del asesino, poco sabemos del hombre que intentó salvar al presidente. <strong>Henry Rathbone</strong> estaba allí con su esposa cuando falló en su cometido: no pudo salvar a Lincoln y esto cambió su vida radicalmente.</p>
+    <p>Rathbone nunca se recuperó mentalmente e intentó matar a sus tres hijos 18 años más tarde. Cuando su esposa lo impidió, la apuñaló y luego intentó suicidarse. Cuando la policía lo encontró, el hombre seguía repitiendo que había personas escondidas detrás de los cuadros. Vivió el resto de su vida en un asilo, convencido de que alguien intentaba envenenarlo a través de las paredes.<!-- end .content --></p>
+  </div>
+ <div class="footer">
+    <p>Encuentranos tambien en: </p>
+    <p>  ---------------------------------------<a href="face"><img src="../1f6115c160dcaf6393958e4f69ed8f17.jpg" width="76" height="59" /></a>   <img src="../4e44224af7f07251d3136d7ca2097175.jpg" width="76" height="59" /> <img src="../F141011YS022.jpg" width="76" height="59" /> <img src="../WhatsApp-Image.jpg" width="76" height="59" />------------------------------------------</p>
+    <!-- end .footer --></div>
+<!-- end .container --></div>
+</body>
+</html>
